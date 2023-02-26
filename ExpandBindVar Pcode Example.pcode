@@ -1,0 +1,16 @@
+/*********************************************************/
+/** PeoopleTools Tech Tips  		   	        		**/
+/** Randy Groncki  2023-02-25          	                **/
+/** peopletoolstechtips@gmail.com                       **/
+/** Expanding Binds						                **/
+/*********************************************************/
+
+Local Record &Rec_X_PT3_E033_WRK = GetRecord();
+
+Local string &Result = &Rec_X_PT3_E033_WRK.DESCRLONG.Value;
+
+rem &Rec_X_PT3_E033_WRK.DESCRLONG1.Value = ExpandBindVar(&Result);
+
+&Rec_X_PT3_E033_WRK.DESCRLONG1.Value = ExpandBindVar(MsgGetExplainText(20020, 1, "Message Not Found"));
+
+&Rec_X_PT3_E033_WRK.DESCRLONG2.Value = " ";

@@ -1,0 +1,41 @@
+/*********************************************************/
+/** PeoopleTools Tech Tips  		   	        		**/
+/** Randy Groncki  2023-02-25          	                **/
+/** peopletoolstechtips@gmail.com                       **/
+/** Expanding Binds						                **/
+/*********************************************************/
+
+Local Record &Rec_X_PT3_E033_WRK = GetRecord();
+
+rem Local SQL &Sql_Example = CreateSQL(&Rec_X_PT3_E033_WRK.DESCRLONG.Value);
+
+Local integer &Int_FTE = &Rec_X_PT3_E033_WRK.FTE.Value;
+Local string &Str_Emplid = &Rec_X_PT3_E033_WRK.EMPLID.Value;
+
+/* Get SQL String from the page */
+rem  &Rec_X_PT3_E033_WRK.DESCRLONG1.Value = " ";
+rem &Rec_X_PT3_E033_WRK.DESCRLONG2.Value = ExpandSqlBinds(&Sql_Example.Value, &Rec_X_PT3_E033_WRK.COUNTRY_NM_FORMAT.Value, &Int_FTE, &Str_Emplid, &Rec_X_PT3_E033_WRK.ASOFDATE.Value, &Rec_X_PT3_E033_WRK.RECNAME.Value);
+
+/* Hardcode SQL String in statement */
+
+/*
+Local string &Result = ExpandSqlBinds("UPDATE %Table(EMPLOYEES)   SET COUNTRY_NM_FORMAT = :1, FTE = :2   WHERE EMPLID = :3   AND EFFDT < %DateIn(:4)", &Rec_X_PT3_E033_WRK.COUNTRY_NM_FORMAT.Value, &Int_FTE, &Str_Emplid, &Rec_X_PT3_E033_WRK.ASOFDATE.Value, &Rec_X_PT3_E033_WRK.RECNAME.Value);
+&Rec_X_PT3_E033_WRK.DESCRLONG2.Value = &Result;
+*/
+/* String SQL in PeopleCode */
+
+/*
+Local string &Str_Sql = "UPDATE %Table(EMPLOYEES)";
+&Str_Sql = &Str_Sql | " SET COUNTRY_NM_FORMAT = :1, ";
+&Str_Sql = &Str_Sql | " FTE = :2";
+&Str_Sql = &Str_Sql | " WHERE EMPLID = :3";
+&Str_Sql = &Str_Sql | " AND EFFDT < %DateIn(:4)";
+
+
+&Result = ExpandSqlBinds(&Str_Sql, &Rec_X_PT3_E033_WRK.COUNTRY_NM_FORMAT.Value, &Int_FTE, &Str_Emplid, &Rec_X_PT3_E033_WRK.ASOFDATE.Value, &Rec_X_PT3_E033_WRK.RECNAME.Value);
+&Rec_X_PT3_E033_WRK.DESCRLONG2.Value = &Result;
+*/
+
+Local SQL &Sql_Example = GetSQL(SQL.X_PT3_E033_03_RECNAME);
+Local string &Result = ExpandSqlBinds(&Sql_Example.Value, &Rec_X_PT3_E033_WRK.COUNTRY_NM_FORMAT.Value, &Int_FTE, &Str_Emplid, &Rec_X_PT3_E033_WRK.ASOFDATE.Value, &Rec_X_PT3_E033_WRK.RECNAME.Value);
+&Rec_X_PT3_E033_WRK.DESCRLONG2.Value = &Result;
