@@ -17,7 +17,7 @@ Grand Role X_PT3 to user profile
 
 ### Web Posting: https://peopletoolstechtips.com/
 
-### YouTube demo: TBD
+### YouTube demo: https://youtu.be/kmAlJ1KI39o
 
 ### Contact:  
 * randy@peopletoolstechtips.com  
