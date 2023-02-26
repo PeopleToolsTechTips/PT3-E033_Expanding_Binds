@@ -15,7 +15,7 @@ Import project into PeopleSoft Demo Environment
 Grand Role X_PT3 to user profile
 
 
-### Web Posting: https://peopletoolstechtips.com/
+### Web Posting: https://peopletoolstechtips.com/expand-your-binds-with-peoplecode/
 
 ### YouTube demo: https://youtu.be/kmAlJ1KI39o
 
